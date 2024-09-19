@@ -98,8 +98,14 @@ body {
 .toggle-fullscreen-btn.on .icon-fullscreen-enter {
   display: none;
 }
-
-
+#loading {
+display: none;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #cfcfcf;
+}
 #start_button {
   display: none;
   position: absolute;
