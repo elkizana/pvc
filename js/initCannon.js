@@ -47,11 +47,16 @@ export function initCannon() {
   //gridHelper
   //var gridHelper = new THREE.GridHelper( 40, 40 );scene.add( gridHelper ) 
   const startButton = document.getElementById('start_button')
+  const loadingText = document.getElementById('loading')
 
   const loader = new GLTFLoader().setPath('./assets/models/');
     loader.load('pvc.glb',   (gltf) => {
-      if (gltf) (startButton.style.display = "block")
-        //if (gltf) (animate())
+      //if (!gltf) (loadingText.style.display = "block")
+        if (gltf) {
+          loadingText.style.display = "none";
+
+          startButton.style.display = "block";
+        }        //if (gltf) (animate())
       mixer = new THREE.AnimationMixer( gltf.scene );
       let clips = gltf.animations;
       clips.forEach(clip => {

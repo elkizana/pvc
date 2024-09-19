@@ -99,7 +99,7 @@ body {
   display: none;
 }
 #loading {
-display: none;
+  display: block;
   position: absolute;
   top: 70%;
   left: 50%;
