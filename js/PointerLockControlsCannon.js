@@ -433,7 +433,7 @@ class PointerLockControlsCannon extends THREE.EventDispatcher {
         */
 
         
-        case 'KeyE':
+     /*    case 'KeyE':
           playerCannonBody.position.y = playerCannonBody.position.y + 10 
         break
         case 'KeyY':
@@ -442,7 +442,7 @@ class PointerLockControlsCannon extends THREE.EventDispatcher {
 
         case 'KeyX':
           playerCannonBody.position.x = playerCannonBody.position.x - 10 
-        break 
+        break  */
 
         case 'Space':
           /* case click left */
