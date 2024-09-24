@@ -22,9 +22,13 @@ export function initPointerLock() {
       
       startButton.style.display = 'none'
       fullscreenBtn.style.display = 'none'
+      document.getElementById("youtube-link").style.display = "none";
+
     })
 
     controls.addEventListener('unlock', () => {
+      document.getElementById("youtube-link").style.display = "flex"; // or "inline-flex"
+
       controls.enabled = false
       startButton.style.display = "block"
       fullscreenBtn.style.display = null

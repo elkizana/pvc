@@ -41,8 +41,51 @@
    </div>
     <button id="start_button">PLAY</button> 
 
- 
 
+    <a href="#" id="youtube-link">
+      <img  src="./assets/icons/youtube-icon.svg" alt="Watch on YouTube" /> 
+      <span>Watch Gameplay (best score yet)  </span>
+
+    </a>
+    
+    <!-- Modal structure -->
+    <div id="youtube-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <iframe id="youtube-video" width="853" height="505" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+    </div>
+    
+<script>// Get the modal, link, and close button
+  const modal = document.getElementById("youtube-modal");
+  const youtubeLink = document.getElementById("youtube-link");
+  const closeBtn = document.querySelector(".close");
+  const youtubeVideo = document.getElementById("youtube-video");
+  
+  // YouTube video URL (with autoplay)
+  const videoURL = "https://www.youtube.com/embed/rVNxFJzy3ag?autoplay=1";
+  
+  // When the user clicks the link, open the modal and embed the video
+  youtubeLink.onclick = function(e) {
+    e.preventDefault();
+    modal.style.display = "block";
+    youtubeVideo.src = videoURL;
+  }
+  
+  // When the user clicks the close button, hide the modal and stop the video
+  closeBtn.onclick = function() {
+    modal.style.display = "none";
+    youtubeVideo.src = ""; // Stop video
+  }
+  
+  // When the user clicks anywhere outside the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+      youtubeVideo.src = ""; // Stop video
+    }
+  }
+  </script>
 
 
     <button  id="fullscreen-btn" class="js-toggle-fullscreen-btn toggle-fullscreen-btn" aria-label="Enter fullscreen mode" >

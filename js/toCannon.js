@@ -8,6 +8,8 @@ export let playerCannonBody , rigidBodies = []
 
 export function emptyRigidBodies() { 
     rigidBodies = []
+    //rigidBodies = rigidBodies.filter(body => body.name == "pole");
+
 }
 
 export function toCannon(mesh,body, materialName  ) { 
@@ -36,7 +38,7 @@ export function toCannon(mesh,body, materialName  ) {
 const {shape, offset, quaternion} = result;
 mesh.material.name == "rigid" ? body = new CANNON.Body({   mass: 200, material: physicsMaterial })  : body = new CANNON.Body({ mass: 0, material: physicsMaterial }) 
 if (mesh.name == "ball")            body.mass = 200
-if (mesh.name.endsWith("gravity"))  body.mass = 200 
+if (mesh.name.endsWith("pole"))  body.name = "pole" 
 if (mesh.name.startsWith("kaaba"))  body.mass = 0
 if (mesh.name.startsWith("end"))  body.name = "end"
 if (mesh.name.startsWith("reset")) body.name = "reset"

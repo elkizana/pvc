@@ -7,6 +7,7 @@ import {rigidBodies} from "./toCannon.js"
 import { toCannon, emptyRigidBodies } from './toCannon.js';
 import { startTimer,resetStopWatch, stopTimer,StopWatchTime,addTextGeometry , ended} from './stopwatch.js'
 import {stats,scene} from './initThree.js'
+import { startStopMiliseconds } from './stopWatchMiliseconds.js' 
 
 function startEvent() {
   if (!startSound.isPlaying) startSound.play()
@@ -100,8 +101,8 @@ function reInitiate () {
   
   
       rigidBodies.forEach((body) => {
-        
-        world.removeBody(body )
+      //  console.log(body.name)
+        /* if ( !body.name == "pole" )  */ world.removeBody(body )
           })
 
       emptyRigidBodies()
@@ -110,7 +111,7 @@ function reInitiate () {
   
          
        
-       if (mesh.name != "ball" && mesh.material.name == "rigid")  toCannon(mesh,CannonBody, "rigid")  
+       if (mesh.name != "ball" && mesh.material.name == "rigid" )  toCannon(mesh,CannonBody, "rigid")  
       })
 
 
@@ -329,9 +330,10 @@ class PointerLockControlsCannon extends THREE.EventDispatcher {
       this.dispatchEvent(this.lockEvent)
 
       this.isLocked = true
+      startStopMiliseconds()
     } else {
       this.dispatchEvent(this.unlockEvent)
-
+      startStopMiliseconds()
       this.isLocked = false
     }
   }
@@ -341,16 +343,6 @@ class PointerLockControlsCannon extends THREE.EventDispatcher {
   }
 
 
-  moveCameraHandler(evt, nipple) {
-    let vector = nipple.vector;
-    let movementX = vector.x;
-    let movementY = vector.y;
-    //console.log(nipple.angle);
-
-    this.yawObject.rotation.y -= movementX * 0.042
-    this.pitchObject.rotation.x += movementY * 0.042
-    this.pitchObject.rotation.x = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, this.pitchObject.rotation.x))
-  }
 
 
   
@@ -433,7 +425,7 @@ class PointerLockControlsCannon extends THREE.EventDispatcher {
         */
 
         
-     /*    case 'KeyE':
+       /*  case 'KeyE':
           playerCannonBody.position.y = playerCannonBody.position.y + 10 
         break
         case 'KeyY':
