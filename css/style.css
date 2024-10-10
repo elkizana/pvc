@@ -165,7 +165,7 @@ body {
  bottom: 20px;
  left: 20px;
  z-index: 100;
- //display: inline-flex; /* Ensures horizontal alignment */
+ display: inline-flex; /* Ensures horizontal alignment */
  align-items: center;  /* Vertically centers the text with the icon */
  gap: 10px;            /* Space between the icon and text */
  text-decoration: none; /* Remove underline from the text */
