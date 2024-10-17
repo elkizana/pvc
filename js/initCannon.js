@@ -11,8 +11,7 @@ import { playerCannonBody, rigidBodies } from "./toCannon.js"
 import { toCannon } from './toCannon.js';
 import { animate } from './animate.js'
 
-export let playerThreeMesh,mixer,world,playerCannonShape,physicsMaterial = [] ,cannonDebugger , rigidMeshes = [] , animatedBodies = [], animatedMeshes = [],OriginalrigidMeshes = [],initPosition = [] , initQuaternion = [],solidMeshes = [],CannonBody = 'let [a, b] = args;return a + b' , materialName = "rigid"  
-
+export let playerThreeMesh,mixer,world,playerCannonShape,physicsMaterial = []  , rigidMeshes = [] , animatedBodies = [], animatedMeshes = [],OriginalrigidMeshes = [],initPosition = [] , initQuaternion = [],solidMeshes = [],CannonBody = 'let [a, b] = args;return a + b' , materialName = "rigid"  
 
 export function initCannon() {
 
@@ -30,7 +29,7 @@ export function initCannon() {
   const physics_physics = new CANNON.ContactMaterial(physicsMaterial, physicsMaterial, {
     contactEquationRelaxation: 3,
     contactEquationStiffness: 1e7,
-    friction: 0.3,
+    friction: 0.9,
     frictionEquationRelaxation: 3,
     frictionEquationStiffness: 1e7,
     restitution: 0.4,
@@ -105,8 +104,9 @@ gltf.scene.children.forEach((object) => {
     if (OriginalrigidMeshes.length > 0) cartoonizeRigid(OriginalrigidMeshes)
 //////////////////////////
 
-
       //cannonDebugger = new CannonDebugger(scene, world, {color: "red"})
+    
+
        const gui_Object = {
         floorBody: false,
         updateCannonDebugger: false,
@@ -115,6 +115,8 @@ gltf.scene.children.forEach((object) => {
         y: 1, 
         z: 1,
       }
+
+   
 
       let gui = new dat.GUI();
       gui.width = 200;

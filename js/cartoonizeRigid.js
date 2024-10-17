@@ -19,7 +19,7 @@ export function cartoonizeRigid( sourceList) {
     rigidMeshGeometry.applyMatrix4( rigidMesh.matrixWorld );
     rigidMeshGeometry.center()
     const mesh = new THREE.Mesh( rigidMeshGeometry );
-    const DARK_LINES = (rigidMesh.name.endsWith("grey") || rigidMesh.material.name == "grey" ) ? 0xa3a3a3: 0x000000 ;
+    const DARK_LINES = (rigidMesh.name.endsWith("grey") || rigidMesh.material.name == "grey" ) ? 0xffffff: 0x000000 ;
         
 
 ///Lines
@@ -45,7 +45,7 @@ export function cartoonizeRigid( sourceList) {
     }
     else if ( rigidMesh.name.endsWith("grey")/*  == "kaabafloortraining" */ )  { 
         mesh.material.opacity = 1
-        mesh.material = new THREE.MeshBasicMaterial( { color: 0x3d3d3d } );
+        mesh.material = new THREE.MeshBasicMaterial( { color: 0x04153d } );
     }
     else if ( rigidMesh.name.endsWith("rigidkaabaend002")/*  == "kaabafloortraining" */ )  { 
         mesh.material.opacity = 1

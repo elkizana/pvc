@@ -2,12 +2,17 @@ import * as THREE from './three.module.js'
 import * as CANNON from './cannon-es.js'
 import { playerCannonBody} from './toCannon.js'
 import { playerThreeMeshFullGroup} from './cartoonizeRigid.js'
-import {OriginalrigidMeshes,world,CannonBody,materialName} from './initCannon.js'
+import {OriginalrigidMeshes,world,CannonBody} from './initCannon.js'
 import {rigidBodies} from "./toCannon.js"
 import { toCannon, emptyRigidBodies } from './toCannon.js';
 import { startTimer,resetStopWatch, stopTimer,StopWatchTime,addTextGeometry , ended} from './stopwatch.js'
 import {stats,scene} from './initThree.js'
 import { startStopMiliseconds } from './stopWatchMiliseconds.js' 
+import CannonDebugger from './cannon-es-debugger.js'
+
+
+export let cannonDebugger
+
 
 function startEvent() {
   if (!startSound.isPlaying) startSound.play()
@@ -32,6 +37,7 @@ let allowEndSound = true
 let allowRKey = true 
 let allowReset = true
 let canplay = false 
+
     const listener = new THREE.AudioListener()
     const audioLoader = new THREE.AudioLoader();
     let end
@@ -195,11 +201,41 @@ class PointerLockControlsCannon extends THREE.EventDispatcher {
   }})
   
 
+/*   world.bodies.forEach((body) => {  
+    if (body.name == "sphere") {
+     // console.log(body.position.y)
+   
+
+    body.addEventListener('collide', (event) => {
+
+      const relativeVelocity = event.contact.getImpactVelocityAlongNormal();
+
+
+      if( Math.abs(relativeVelocity) >   1 ) {
+              
+        ballCollisionSound.setVolume( relativeVelocity / 10);
+         
+        //body.add(ballCollisionSound)
+        if (!ballCollisionSound.isPlaying )  ballCollisionSound.play() 
+      }
+    
+      if (event.contact.bj.name == "jumper" ) { 
+        //body.velocity.y = 20
+        //if (!jumperSound.isPlaying )  jumperSound.play()
+   }
+
+
+    })
+  }
+ })  */
+
+
+
     this.cannonBody.addEventListener('collide', (event) => {
         
         //console.log(event.contact.bj.name)
 
-              if (event.contact.bj.name == "reset" && allowReset ) { 
+         /*      if (event.contact.bj.name == "reset" && allowReset ) { 
                 setTimeout(() => {
                   allowReset = false
                   reInitiate()  
@@ -212,7 +248,7 @@ class PointerLockControlsCannon extends THREE.EventDispatcher {
                 setTimeout(() => {
                   allowReset = true 
                 }, 2000);
-                }
+                } */
 
                 if (event.contact.bj.name == "jumper" ) { 
                     this.velocity.y = this.jumpVelocity * 7
@@ -251,7 +287,7 @@ class PointerLockControlsCannon extends THREE.EventDispatcher {
               ballCollisionSound.setVolume( relativeVelocity / 10);
                
               this.playerThreeMesh.add(ballCollisionSound)
-              if (!ballCollisionSound.isPlaying )  ballCollisionSound.play() && walkingSound.stop() && flyingSound.stop()
+              if (!ballCollisionSound.isPlaying )  ballCollisionSound.play() 
             }
 
 
@@ -412,8 +448,12 @@ class PointerLockControlsCannon extends THREE.EventDispatcher {
             // hide  document.body.appendChild(stats.dom)
             if (stats.dom.style.display === '' || stats.dom.style.display === 'none') {
               stats.dom.style.display = 'block';
+               //cannonDebugger = new CannonDebugger(scene, world, {color: "red"})
+              
           } else {
               stats.dom.style.display = 'none';
+               
+
           }
           
           break
@@ -425,7 +465,7 @@ class PointerLockControlsCannon extends THREE.EventDispatcher {
         */
 
         
-       /*  case 'KeyE':
+      /*   case 'KeyE':
           playerCannonBody.position.y = playerCannonBody.position.y + 10 
         break
         case 'KeyY':
@@ -442,7 +482,7 @@ class PointerLockControlsCannon extends THREE.EventDispatcher {
           //case  'Button0':
         if (this.canJump) {
           this.velocity.y = this.jumpVelocity
-           if (!jumpSound.isPlaying) jumpSound.play() && walkingSound.stop() && flyingSound.stop()
+           if (!jumpSound.isPlaying) jumpSound.play()
         }
         this.canJump = false
         break

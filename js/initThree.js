@@ -77,8 +77,8 @@ export function initThree() {
       var sphereMaterial = new THREE.ShaderMaterial({
         uniforms: {
           skyRadius: { value: skyDomeRadius },
-          env_c1: { value: new THREE.Color("#0d1a2f") },
-          env_c2: { value: new THREE.Color("#0f8682") },
+          env_c1: { value: new THREE.Color("#000000") },
+          env_c2: { value: new THREE.Color("#040f0e") },
           noiseOffset: { value: new THREE.Vector3(100.01, 100.01, 100.01) },
           starSize: { value: 0.01 },
           starDensity: { value: 0.09 },

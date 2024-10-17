@@ -43,6 +43,8 @@ if (mesh.name.startsWith("kaaba"))  body.mass = 0
 if (mesh.name.startsWith("end"))  body.name = "end"
 if (mesh.name.startsWith("reset")) body.name = "reset"
 if (mesh.name.startsWith("jumper")) body.name = "jumper"
+if (mesh.name.startsWith("Sphere")) body.name = "sphere"
+
 
 
 

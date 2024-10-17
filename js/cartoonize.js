@@ -32,9 +32,9 @@ export function cartoonize( solidMeshes ) {
             geometries.push( geometry );
 
             // Assign a different color based on a condition (example: mesh name)
-            const color = (eachMesh.name.endsWith("grey") || eachMesh.material.name == "grey" ) ? 0x3d3d3d : LIGHT_MODEL;
-            const DARK_LINES = (eachMesh.name.endsWith("grey") || eachMesh.material.name == "grey" ) ? 0xa3a3a3: 0x2e2d2d ;
-            const linewidth = (eachMesh.name.endsWith("grey") || eachMesh.material.name == "grey" ) ? .001 : .002 ;
+            const color = (eachMesh.name.endsWith("grey") || eachMesh.material.name == "grey" /* || eachMesh.name.startsWith("jumper") */ ) ? 0x04153d : LIGHT_MODEL;
+            const DARK_LINES = (eachMesh.name.endsWith("grey") || eachMesh.material.name == "grey" ) ? 0xffffff: 0x2e2d2d ;
+            const linewidth = (eachMesh.name.endsWith("grey") || eachMesh.material.name == "grey" ) ? .002 : .002 ;
             const material = new THREE.MeshBasicMaterial({ color: color });
 
             // Create the mesh

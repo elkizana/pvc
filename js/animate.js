@@ -1,8 +1,9 @@
 import {  renderer, scene, camera} from "./initThree.js"
 import {  controls} from "./initPointerLock.js"
-import { world  , cannonDebugger, mixer, animatedMeshes, animatedBodies} from "./initCannon.js"
+import { world  , mixer, animatedMeshes, animatedBodies} from "./initCannon.js"
 import { fullGroupAnimated,fullGroupRigid } from "./cartoonizeRigid.js"
 import {rigidBodies} from "./toCannon.js"
+import {cannonDebugger} from "./PointerLockControlsCannon.js"
 // import stats 
 import   {stats} from './initThree.js'
 
