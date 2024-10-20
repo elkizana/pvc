@@ -11,7 +11,11 @@ export function cartoonizeRigid( sourceList) {
 
     let threshold = 11 
    // const DARK_LINES = 0x000000
-    const LIGHT_MODEL = 0xffffff;
+    const white = 0xffffff 
+    const black = 0x000000
+    const blue =     0x04153d
+    const red =     0x8c071b
+
 
     sourceList.forEach(rigidMesh => {
 
@@ -24,14 +28,14 @@ export function cartoonizeRigid( sourceList) {
 
 ///Lines
 /*     let lineGeom = new THREE.EdgesGeometry( rigidMeshGeometry , threshold );
-    const line = new THREE.LineSegments( lineGeom, new THREE.LineBasicMaterial( { color: DARK_LINES } ) );
+    const line = new THREE.LineSegments( lineGeom, new THREE.LineBasicMaterial( { color: black } ) );
     line.position.copy( mesh.position );
     line.scale.copy( mesh.scale );
     line.rotation.copy( mesh.rotation ); */
 ////thickLines
      let lineGeom = new THREE.EdgesGeometry( rigidMeshGeometry , threshold );
     const thickLineGeom = new LineSegmentsGeometry().fromEdgesGeometry( lineGeom );
-    const thickLines = new LineSegments2( thickLineGeom, new LineMaterial( { color: DARK_LINES, linewidth: .001 } ) );
+    let thickLines = new LineSegments2( thickLineGeom, new LineMaterial( { color: black, linewidth: .001 } ) );
     thickLines.position.copy( mesh.position );
     thickLines.scale.copy( mesh.scale );
     thickLines.rotation.copy( mesh.rotation ); 
@@ -40,20 +44,22 @@ export function cartoonizeRigid( sourceList) {
     const linesGroup = new THREE.Group();
  
     if (rigidMesh.name == "ball") {
-        mesh.material = new THREE.MeshBasicMaterial( { color: 0xffffff } );
+         thickLines = new LineSegments2( thickLineGeom, new LineMaterial( { color: black, linewidth: .001 } ) );
+
+        mesh.material = new THREE.MeshBasicMaterial( { color: white} );
         
     }
     else if ( rigidMesh.name.endsWith("grey")/*  == "kaabafloortraining" */ )  { 
         mesh.material.opacity = 1
-        mesh.material = new THREE.MeshBasicMaterial( { color: 0x04153d } );
+        mesh.material = new THREE.MeshBasicMaterial( { color: red } );
     }
-    else if ( rigidMesh.name.endsWith("rigidkaabaend002")/*  == "kaabafloortraining" */ )  { 
+    else if ( rigidMesh.name.endsWith("aaaaapole")/*  == "kaabafloortraining" */ )  { 
         mesh.material.opacity = 1
-        mesh.material = new THREE.MeshBasicMaterial( { color: 0x75001b } );
+        mesh.material = new THREE.MeshBasicMaterial( { color: red } );
     }
 
     else { 
-    mesh.material = new THREE.MeshBasicMaterial( { color: LIGHT_MODEL } );
+    mesh.material = new THREE.MeshBasicMaterial( { color: white } );
     
     mesh.material.polygonOffset = true;
     mesh.material.polygonOffsetFactor = 1;

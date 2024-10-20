@@ -1,6 +1,8 @@
 const StarrySkyShader = {
 
   vertexShader: `
+  precision highp float;
+
     varying vec3 vPos;
 
     void main() {

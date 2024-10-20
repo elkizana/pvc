@@ -13,6 +13,12 @@ export function cartoonize( solidMeshes ) {
     //const DARK_LINES = 0x2e2d2d;
     const LIGHT_MODEL = 0xffffff;
 
+
+    const white = 0xffffff 
+    const black = 0x000000
+    const blue =     0x04153d
+    const red =     0x8c071b
+
     const geometries = [];
     
     solidMeshes.forEach( eachMesh => {
@@ -32,8 +38,8 @@ export function cartoonize( solidMeshes ) {
             geometries.push( geometry );
 
             // Assign a different color based on a condition (example: mesh name)
-            const color = (eachMesh.name.endsWith("grey") || eachMesh.material.name == "grey" /* || eachMesh.name.startsWith("jumper") */ ) ? 0x04153d : LIGHT_MODEL;
-            const DARK_LINES = (eachMesh.name.endsWith("grey") || eachMesh.material.name == "grey" ) ? 0xffffff: 0x2e2d2d ;
+            const color = (eachMesh.name.endsWith("grey") || eachMesh.material.name == "grey" /* || eachMesh.name.startsWith("jumper") */ ) ? red : white;
+            const DARK_LINES = (eachMesh.name.endsWith("grey") || eachMesh.material.name == "grey" ) ? white : red ;
             const linewidth = (eachMesh.name.endsWith("grey") || eachMesh.material.name == "grey" ) ? .002 : .002 ;
             const material = new THREE.MeshBasicMaterial({ color: color });
 
@@ -44,7 +50,7 @@ export function cartoonize( solidMeshes ) {
             let lineGeom = new THREE.EdgesGeometry( mesh.geometry, threshold );
 
             const thickLineGeom = new LineSegmentsGeometry().fromEdgesGeometry( lineGeom );
-            const thickLines = new LineSegments2( thickLineGeom, new LineMaterial( { color: DARK_LINES, linewidth } ) );
+            const thickLines = new LineSegments2( thickLineGeom, new LineMaterial( { color: black, linewidth } ) );
             thickLines.position.copy( mesh.position );
             thickLines.scale.copy( mesh.scale );
             thickLines.rotation.copy( mesh.rotation );
