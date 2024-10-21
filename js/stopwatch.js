@@ -15,6 +15,7 @@ let time = 0;
 let interval;
 let myfont
 let material = new THREE.MeshBasicMaterial({ color: "white" })
+
 let shortcutNotesText = "_________________________________________________\n\nPress 'R' to restart\nPress 'F' for Fullscreen\n_________________________________________________\n\nObjective : Go up, reach the gravity pole and make it fall.\n_________________________________________________\n\nNotes:\n\n- Train ! The game is impossible to play without proper training.\n\n- There is no save points. If you fall you start over.\n\n- Levels and improvements are regularly added by the developer.\n\n- If you have suggestions/critics send them to spherevsgravity@gmail.com\n\nHave fun!\n\n_________________________________________________ "
 
 const loader = new FontLoader();  
@@ -86,6 +87,31 @@ export function resetStopWatch (  ) {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+let countdownTextMesh;
+let countdownTime = 60; // Number of seconds before the text disappears
+
+function updateCountdownText() {
+  if (countdownTextMesh) scene.remove(countdownTextMesh);
+
+  const countdownGeometry = new TextGeometry("Text disappears in " + countdownTime + " seconds", {
+    font: myfont,
+    size: 25,
+    height: 2,
+  });
+
+  countdownTextMesh = new THREE.Mesh(countdownGeometry, material);
+  countdownTextMesh.position.set(-1000, -950, 50); // Position of countdown text
+  countdownTextMesh.rotation.y = 20
+  scene.add(countdownTextMesh);
+
+  countdownTime--;
+  if (countdownTime >= 0) {
+    setTimeout(updateCountdownText, 1000); // Update countdown every second
+  } else {
+    scene.remove(countdownTextMesh); // Remove countdown when time runs out
+    scene.remove(shortcutMesh); // Remove the original text
+  }
+}
 
 function shortcutText () { 
 
@@ -108,8 +134,10 @@ function shortcutText () {
    
   setTimeout(() => {
      scene.remove(shortcutMesh)
-  }, 100000);
+  }, 600000);
+  updateCountdownText();
 }
+//u // Start countdown after showing the text
 
 setTimeout(() => {
   shortcutText()
