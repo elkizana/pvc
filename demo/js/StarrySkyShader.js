@@ -1,8 +1,6 @@
 const StarrySkyShader = {
 
   vertexShader: `
-  precision highp float;
-
     varying vec3 vPos;
 
     void main() {
@@ -14,6 +12,7 @@ const StarrySkyShader = {
   `,
 
   fragmentShader: `
+  precision highp float;
     vec4 permute(vec4 x){return mod(((x*34.0)+1.0)*x, 289.0);}
     vec4 taylorInvSqrt(vec4 r){return 1.79284291400159 - 0.85373472095314 * r;}
     vec3 fade(vec3 t) {return t*t*t*(t*(t*6.0-15.0)+10.0);}
@@ -107,13 +106,15 @@ const StarrySkyShader = {
       float scaledClusterSize = (1.0/clusterSize)/skyRadius;
       float scaledStarSize = (1.0/starSize)/skyRadius;
 
-      float cs = pow(cnoise(scaledClusterSize*vPos+noiseOffset),1.0/clusterStrength) + cnoise(scaledStarSize*vPos);
+ //     float cs = pow(cnoise(scaledClusterSize*vPos+noiseOffset),1.0/clusterStrength) + cnoise(scaledStarSize*vPos);
 
+ //     float c =clamp(pow(cs, 1.0/starDensity),0.0,1.0);
+      
+      
+      float cs = pow(abs(cnoise(scaledClusterSize*vPos+noiseOffset)),1.0/clusterStrength) + cnoise(scaledStarSize*vPos);
 
-
-float c =clamp(pow(abs(cs), 1.0/starDensity),0.0,1.0);
-
-
+      float c =clamp(pow(abs(cs), 1.0/starDensity),0.0,1.0);
+      
       vec4 starColor = 0.5*vec4(c, c, c, 1.0);
 
       gl_FragColor = backgroundColor;
@@ -124,8 +125,3 @@ float c =clamp(pow(abs(cs), 1.0/starDensity),0.0,1.0);
 };
 
 export default StarrySkyShader;
-
-
-/* float c =clamp(pow(cs, 1.0/starDensity),0.0,1.0);
-
-float cs = pow(abs(cnoise(scaledClusterSize*vPos+noiseOffset)),1.0/clusterStrength) + cnoise(scaledStarSize*vPos); */

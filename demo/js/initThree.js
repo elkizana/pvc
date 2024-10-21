@@ -82,7 +82,7 @@ export function initThree() {
           noiseOffset: { value: new THREE.Vector3(100.01, 100.01, 100.01) },
           starSize: { value: 0.01 },
           starDensity: { value: 0.09 },
-          clusterStrength: { value: 0.2 },
+          clusterStrength: { value: 0.05 },
           clusterSize: { value: 0.2 },
         },
         vertexShader: StarrySkyShader.vertexShader,
