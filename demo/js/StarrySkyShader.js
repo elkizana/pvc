@@ -109,7 +109,11 @@ const StarrySkyShader = {
 
       float cs = pow(cnoise(scaledClusterSize*vPos+noiseOffset),1.0/clusterStrength) + cnoise(scaledStarSize*vPos);
 
-      float c =clamp(pow(cs, 1.0/starDensity),0.0,1.0);
+
+
+float c =clamp(pow(abs(cs), 1.0/starDensity),0.0,1.0);
+
+
       vec4 starColor = 0.5*vec4(c, c, c, 1.0);
 
       gl_FragColor = backgroundColor;
@@ -120,3 +124,8 @@ const StarrySkyShader = {
 };
 
 export default StarrySkyShader;
+
+
+/* float c =clamp(pow(cs, 1.0/starDensity),0.0,1.0);
+
+float cs = pow(abs(cnoise(scaledClusterSize*vPos+noiseOffset)),1.0/clusterStrength) + cnoise(scaledStarSize*vPos); */
