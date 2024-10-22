@@ -80,7 +80,7 @@ export function initThree() {
           env_c1: { value: new THREE.Color("#000000") },
           env_c2: { value: new THREE.Color("#040f0e") },
           noiseOffset: { value: new THREE.Vector3(100.01, 100.01, 100.01) },
-          starSize: { value: 0.01 },
+          starSize: { value: 0.005 },
           starDensity: { value: 0.09 },
           clusterStrength: { value: 0.05 },
           clusterSize: { value: 0.2 },
