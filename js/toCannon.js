@@ -19,16 +19,17 @@ export function toCannon(mesh,body, materialName  ) {
     if (  mesh.name.startsWith("Sphere") )  {
                 result = threeToCannon(mesh ,{type: ShapeType.SPHERE})   
     }   
-    else if (  mesh.name.startsWith("ball") )  {
+    else if (  mesh.name.startsWith("ball")  || mesh.material.name == "animated" )  {
                 result = threeToCannon(mesh ,{type: ShapeType.SPHERE})   
     }   
     else if (  mesh.name.startsWith("Cylinder") ||  mesh.name.startsWith("jumper")   )  {
                 result = threeToCannon(mesh ,{type: ShapeType.CYLINDER})   
     }  
   
-     else if (  mesh.name.startsWith("kaaba") ||  mesh.name.startsWith("rigidkaaba") /* || mesh.material.name == "solidbox" */ )  {
+     else if (  mesh.name.startsWith("kaaba") ||  mesh.name.startsWith("rigidkaaba") )  {
                 result = threeToCannon(mesh ,{type: ShapeType.BOX})   
     }   
+    
      else {
                 result = threeToCannon(mesh,{type: ShapeType.HULL})  
                 //console.log("mesh.name",mesh.name)
