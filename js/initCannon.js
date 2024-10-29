@@ -74,6 +74,7 @@ gltf.scene.children.forEach((object) => {
       OriginalrigidMeshes.push(object);
       if (object.material.name == "animated") animatedMeshes.push(object)
       if (object.name == "ball") playerThreeMesh = object
+      
       //toCannon(object,CannonBody, "rigid") 
     }
     
@@ -94,7 +95,7 @@ gltf.scene.children.forEach((object) => {
     })
 
     solidMeshes.forEach((solidMesh) => {
-      if (solidMesh.name != "globe") toCannon(solidMesh,CannonBody, "solid")
+      if (solidMesh.name != "sate") toCannon(solidMesh,CannonBody, "solid")
     })
 ///////////////////////////////////////
 

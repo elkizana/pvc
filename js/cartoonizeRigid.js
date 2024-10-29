@@ -66,7 +66,7 @@ export function cartoonizeRigid( sourceList) {
     mesh.material.polygonOffsetUnits = 1;
     mesh.renderOrder = 2;
     mesh.material.transparent = true
-    mesh.material.opacity = 0.8
+    mesh.material.name = "animated" ? mesh.material.opacity = 1 : mesh.material.opacity = 0.8
 }
 
 
