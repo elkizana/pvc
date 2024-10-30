@@ -53,7 +53,7 @@ let canplay = false
     audioLoader.load( './assets/sounds/background.mp3', function( buffer ) {
       backgroundSound.setBuffer( buffer );
       backgroundSound.setRefDistance( 2000 );
-      backgroundSound.setVolume( 0.04 );
+      backgroundSound.setVolume( 0.07 );
       backgroundSound.setLoop( true );
       backgroundSound.play();
     });
