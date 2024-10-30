@@ -88,7 +88,7 @@ export function resetStopWatch (  ) {
 
 
 let countdownTextMesh;
-let countdownTime = 60; // Number of seconds before the text disappears
+let countdownTime = 120; // Number of seconds before the text disappears
 
 function updateCountdownText() {
   if (countdownTextMesh) scene.remove(countdownTextMesh);
@@ -134,7 +134,7 @@ function shortcutText () {
    
   setTimeout(() => {
      scene.remove(shortcutMesh)
-  }, 600000);
+  }, 12000000);
   updateCountdownText();
 }
 //u // Start countdown after showing the text
